@@ -62,7 +62,15 @@
     <Analyzer Include="/Users/USER/.vscode/extensions/visualstudiotoolsforunity.vstuc-0.9.3/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/GameController.cs" />
     <Compile Include="Assets/Scripts/CarController.cs" />
+    <Compile Include="Assets/Scripts/CameraFollow.cs" />
+    <Compile Include="Assets/Scripts/Timer.cs" />
+    <Compile Include="Assets/ParticleController.cs" />
+    <Compile Include="Assets/Scripts/TimeManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets/SimpleFX/Materials/UnlitVertexColour_Alpha.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
