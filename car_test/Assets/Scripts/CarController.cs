@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class CarController : MonoBehaviour
 {
@@ -46,6 +49,8 @@ public class CarController : MonoBehaviour
 
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
+        StartCoroutine(UpdateSpeedWithDelay());
+
 
     }
 
@@ -176,13 +181,33 @@ public class CarController : MonoBehaviour
         }
 
     }
+    public TextMeshProUGUI speedText;
+    public RectTransform arrow; // The arrow in the speedometer
+    public float minSpeedArrowAngle;
+    public float maxSpeedArrowAngle;
 
-    void SpeedDisplay()
+
+  void SpeedDisplay()
+{
+    speed = carRb.velocity.magnitude;
+    int speedInteger = Mathf.RoundToInt(speed);
+    speedText.text = speedInteger + " km/hr";
+    arrow.localEulerAngles =
+                new Vector3(0, 0, Mathf.Lerp(minSpeedArrowAngle, maxSpeedArrowAngle, speed / 180));
+}
+
+
+    IEnumerator UpdateSpeedWithDelay()
     {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
 
-        speed = carRb.velocity.magnitude;
-        Debug.Log(speed);
-
+            // Update the speed display
+            SpeedDisplay();
+        }
     }
+
+    
 
 }

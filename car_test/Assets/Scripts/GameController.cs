@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
-    public int puzzle = 0;
+    public static int puzzle = 0;
     void Start()
     {
 
